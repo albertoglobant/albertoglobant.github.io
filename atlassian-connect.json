@@ -10,8 +10,10 @@
     "authentication": {
         "type": "none"
     },
-    "icons": {
-        "16": "https://statics.globant.com/production/public/Fav-icon_Globant_8_2.png"
+    "icon": {
+        "width": 16,
+        "height": 16,
+        "url": "https://statics.globant.com/production/public/Fav-icon_Globant_8_2.png" 
     },
     "apiVersion": 3,
     "modules": {
