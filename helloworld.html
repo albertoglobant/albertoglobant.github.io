@@ -51,11 +51,13 @@
                     headers: {
                         "Content-Type": "application/json"
                     },
-                   // mode: "no-cors",
                     body: JSON.stringify(jiraRequestBody)
                 }).then((data) => {
-                    console.log(data.json)
-                    window.open("https://www.google.com/", "ventana_nueva");
+                    return data.json();
+                }).then((data) => {
+                    console.log(data)
+                    const URL_TO_OPEN = "https://alexgptplusplus.atlassian.net/browse/" + data.key
+                    window.open(URL_TO_OPEN, "ventana_nueva");
                     //return data.json();
                 })
 

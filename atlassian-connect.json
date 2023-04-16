@@ -1,14 +1,17 @@
 {
     "name": "User Story",
     "description": "Atlassian Connect app",
-    "key": "com.example.myapp",
+    "key": "com.globant.userstory",
     "baseUrl": "https://albertoglobant.github.io",
     "vendor": {
-        "name": "Example, Inc.",
+        "name": "Globant by Alberto, Inc.",
         "url": "http://example.com"
     },
     "authentication": {
         "type": "none"
+    },
+    "icons": {
+        "16": "https://statics.globant.com/production/public/Fav-icon_Globant_8_2.png"
     },
     "apiVersion": 3,
     "modules": {
