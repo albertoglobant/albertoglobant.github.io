@@ -1,7 +1,7 @@
 {
-    "name": "Hello World",
+    "name": "User Story",
     "description": "Atlassian Connect app",
-    "key": "com.example.myapp",
+    "key": "com.example.myapp2",
     "baseUrl": "https://albertoglobant.github.io",
     "vendor": {
         "name": "Example, Inc.",
@@ -15,10 +15,10 @@
         "generalPages": [
             {
                 "url": "/helloworld.html",
-                "key": "hello-world",
+                "key": "User Story",
                 "location": "system.top.navigation.bar",
                 "name": {
-                    "value": "Greeting"
+                    "value": "User Story"
                 }
             }
         ]
