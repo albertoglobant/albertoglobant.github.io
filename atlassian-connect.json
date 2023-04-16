@@ -1,5 +1,5 @@
 {
-    "name": "Hello World",
+    "name": "User Story",
     "description": "Atlassian Connect app",
     "key": "com.example.myapp",
     "baseUrl": "https://albertoglobant.github.io",
@@ -18,7 +18,7 @@
                 "key": "hello-world",
                 "location": "system.top.navigation.bar",
                 "name": {
-                    "value": "Greeting"
+                    "value": "Globant User Story"
                 }
             }
         ]

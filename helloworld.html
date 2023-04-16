@@ -42,6 +42,28 @@
                     }
                 }
                 
+
+
+
+                await fetch("http://localhost:3005/api/chatgpt/proxyjira", 
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                   // mode: "no-cors",
+                    body: JSON.stringify(jiraRequestBody)
+                }).then((data) => {
+                    console.log(data.json)
+                    window.open("https://www.google.com/", "ventana_nueva");
+                    //return data.json();
+                })
+
+
+
+
+
+/*
                 await fetch("https://alexgptplusplus.atlassian.net/rest/api/2/issue/", 
                 {
                     method: "POST",
@@ -56,11 +78,8 @@
                     console.log(data.json)
                     //return data.json();
                 })
+                */
             
-                
-                
-                //console.log('Se ha ejectuado esto google ');
-                //window.open("https://www.google.com/", "ventana_nueva");
             
                 
             }
@@ -150,9 +169,7 @@
             }
             
 
-                console.log('Se ha ejectuado esto alberto');
-            
-                console.log('Se ha ejectuado esto alberto');
+               
                 const newMessage = {
                     message: "Hi, I am GlobantGPT, what can I help you?",
                     direction: 'outgoing',
