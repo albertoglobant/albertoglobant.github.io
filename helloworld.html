@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <style>
+            #message-input {
+            width: 75%;
+            margin: 0;
+            }
+          </style>
         <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@2.0.0/dist/bundle.css" media="all">
         <script src="https://connect-cdn.atl-paas.net/all.js" async></script>
     </head>
     <body>
         <section id="content" class="ac-content">
-		<h1>Hello World</h1>
-            <h2>Alberto12</h2>
+		<h1>Create your User Story in a fastest way</h1>
+            <h2>Globant Idea</h2>
             <button onclick="sendToJira()">Enviar a Jira</button>
-            <button onclick="mostrarTexto()">Mostrar texto</button>
-            <button onclick="albertofun()">Mostrar texto</button>
+            <button>User Story for Front</button>
 	        <div id="nuevoTexto" style="display:none">
-		        <p>Este es el nuevo texto que aparecerá cuando se presione el botón.</p>
+		        <p>User Story for Front UI</p>
 	        </div>
 
             <div id="chat">
                 <div id="messages"></div>
-                <input type="text" id="message-input" placeholder="Escribe tu mensaje aquí">
+                <input type="text" id="message-input" placeholder="User Story Title">
                 <button id="send-btn">Enviar</button>
               </div>
 
@@ -34,16 +39,18 @@
                     "project":{
                         "key": "JIR"
                         },
-                    "summary": "Social Login 123",
-                    "description": "Creating of an issue using project keys and issue type names using the REST API",
+                    "summary": setMessages[0].message,
+                    "description": setMessages[setMessages.length -1].message,
                     "issuetype": {
                         "name": "Story"
                         }
                     }
                 }
                 
-
-
+                console.log("albertoxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+                console.log(setMessages[0].message)
+                console.log("alberto333333333333333333333333333333333333333")
+                console.log(setMessages[setMessages.length -1].message)
 
                 await fetch("http://localhost:3005/api/chatgpt/proxyjira", 
                 {
@@ -85,9 +92,6 @@
             
                 
             }
-            function mostrarTexto() {
-			    document.getElementById("nuevoTexto").style.display = "block";
-		    }
 
 
 
@@ -159,38 +163,6 @@
 
             const setMessages = []
 
-
-            async function albertofun(){
-                const setMessages = []
-
-                const messages1 =
-            {
-                message: "Hi, I am GlobantGPT, what can I help you?",
-                sentTime: "just now",
-                sender: "ChatGPT"
-            }
-            
-
-               
-                const newMessage = {
-                    message: "Hi, I am GlobantGPT, what can I help you?",
-                    direction: 'outgoing',
-                    sender: "user"
-                };
-
-                const newMessages = [messages1, newMessage];
-    
-                //setMessages(newMessages);
-
-                // Initial system message to determine ChatGPT functionality
-                // How it responds, how it talks, etc.
-                //setIsTyping(true);
-
-
-
-                await processMessageToChatGPT(newMessages);
-            
-        }
 
 
 

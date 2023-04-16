@@ -10,11 +10,6 @@
     "authentication": {
         "type": "none"
     },
-    "icon": {
-        "width": 16,
-        "height": 16,
-        "url": "https://statics.globant.com/production/public/Fav-icon_Globant_8_2.png" 
-    },
     "apiVersion": 3,
     "modules": {
         "generalPages": [
@@ -22,6 +17,11 @@
                 "url": "/helloworld.html",
                 "key": "hello-world",
                 "location": "system.top.navigation.bar",
+                "icon": {
+                    "width": 16,
+                    "height": 16,
+                    "url": "https://statics.globant.com/production/public/Fav-icon_Globant_8_2.png" 
+                },
                 "name": {
                     "value": "Globant User Story"
                 }
