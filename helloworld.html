@@ -34,7 +34,7 @@
                     "project":{
                         "key": "JIR"
                         },
-                    "summary": "REST ye merry gentlemen.",
+                    "summary": "Social Login 123",
                     "description": "Creating of an issue using project keys and issue type names using the REST API",
                     "issuetype": {
                         "name": "Story"
@@ -184,13 +184,6 @@
                 
                 const content= 'Respond as if you were a product owner. Create a User Story this format: 1. Tittle of the User Story 2. Description with the format "as a user" and Feature and at least 3 Scenario using Gherking. 3.Acceptance criteria 4. Story point and explain why. 5. topics to discuss. 6. Additional Documentation. 7. Unhappy path. 8. Business Value (tangible and intangible benefics a business can get from the capabilities of a product)'
 
-                const api1 = "sk-tbzKPK8dDRhT4H"
-                const api2 = "7a5SGMT3BlbkFJQzzs"
-                const api3 = "IhDS2DdUvh3VuF2d"
-
-                const API_KEY = api1 + api2 + api3;
-
-                //const API_KEY = "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";
                 const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
                      "role": "system", "content": content
                 }
@@ -222,11 +215,11 @@
                     ]
                 }
 
-                await fetch("https://api.openai.com/v1/chat/completions", 
+
+                await fetch("http://localhost:3005/api/chatgpt/proxychat", 
                 {
                     method: "POST",
                     headers: {
-                        "Authorization": "Bearer " + API_KEY,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify(apiRequestBody)
@@ -241,13 +234,6 @@
                     })
                     console.log(setMessages);
                     renderMessages2()
-                    /*
-                    setMessages([...chatMessages, {
-                        message: data.choices[0].message.content,
-                        sender: "ChatGPT"
-                    }]);
-                    setIsTyping(false);
-                    */
                 });
             }
 
