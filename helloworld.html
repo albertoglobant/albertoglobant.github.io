@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@2.0.0/dist/bundle.css" media="all">
+        <script src="https://connect-cdn.atl-paas.net/all.js" async></script>
+    </head>
+    <body>
+        <section id="content" class="ac-content">
+		<h1>Hello World</h1>
+            <h2>Alberto12</h2>
+            <button onclick="sendToJira()">Enviar a Jira</button>
+            <button onclick="mostrarTexto()">Mostrar texto</button>
+            <button onclick="albertofun()">Mostrar texto</button>
+	        <div id="nuevoTexto" style="display:none">
+		        <p>Este es el nuevo texto que aparecerá cuando se presione el botón.</p>
+	        </div>
+
+            <div id="chat">
+                <div id="messages"></div>
+                <input type="text" id="message-input" placeholder="Escribe tu mensaje aquí">
+                <button id="send-btn">Enviar</button>
+              </div>
+
+        <script>
+            
+            function miFuncion() {
+                // Aquí puedes añadir tu código JavaScript
+                console.log('El botón ha sido pulsado');
+            }
+            async function sendToJira() {
+
+                const jiraRequestBody = {
+                    "fields": {
+                    "project":{
+                        "key": "JIR"
+                        },
+                    "summary": "REST ye merry gentlemen.",
+                    "description": "Creating of an issue using project keys and issue type names using the REST API",
+                    "issuetype": {
+                        "name": "Story"
+                        }
+                    }
+                }
+                
+                await fetch("https://alexgptplusplus.atlassian.net/rest/api/2/issue/", 
+                {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Basic " + "YWxiZXJ0b2dsb2JhbnRtYWRyaWRAZ21haWwuY29tOkFUQVRUM3hGZkdGMHV6VHByNzJnZzdqRWttWWRKaURNVkFaSVpKMkFwSERaTmVWTFo1VE1iQXQwY0wyNTlVUE9La2NSZWxrQk01MHVsYXFXd0k4aVplcFJDcmVmWkNkWlJncEpDWGV2MVQ4Q1RaTlQzaVZMTEhmTllBemNVU04xU3o1LVk0SVJzQ2Etd0Ftb2dHQWI5X1JzQ1NBYUpsTUJBWlNWRUN5R3BmRTNfQTV0ZUt3U1JSND0wODA4MUVGNQ",
+                        "Content-Type": "application/json"
+                    },
+                   // mode: "no-cors",
+                    body: JSON.stringify(jiraRequestBody)
+                }).then((data) => {
+                    //window.open("https://www.google.com/", "ventana_nueva");
+                    console.log(data.json)
+                    //return data.json();
+                })
+            
+                
+                
+                //console.log('Se ha ejectuado esto google ');
+                //window.open("https://www.google.com/", "ventana_nueva");
+            
+                
+            }
+            function mostrarTexto() {
+			    document.getElementById("nuevoTexto").style.display = "block";
+		    }
+
+
+
+            // Obtener mensajes del Local Storage
+            //let messages = JSON.parse(localStorage.getItem('messages')) || [];
+            console.log("version 3");
+            let messages = []
+
+            // Función para renderizar los mensajes
+            function renderMessages() {
+                const messagesDiv = document.querySelector('#messages');
+                messagesDiv.innerHTML = '';
+                messages.forEach((message) => {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.innerHTML = `<strong>${message.username}:</strong> ${message.message}`;
+                    messagesDiv.appendChild(messageDiv);
+                });
+            }
+            // Función para agregar un mensaje
+            function addMessage(message) {
+                messages.push(message);
+                console.log(message);
+                console.log(messages);
+
+                //localStorage.setItem('messages', JSON.stringify(messages));
+                renderMessages();
+            }
+
+            // Escuchar evento de enviar mensaje
+            const sendBtn = document.querySelector('#send-btn');
+            sendBtn.addEventListener('click', () => {
+                const messageInput = document.querySelector('#message-input');
+                const message = messageInput.value;
+                messageInput.value = '';
+                const username = 'Guest';
+                addMessage({ message, username });
+
+
+                setMessages.push({
+                        message: message,
+                        sender: "you",
+                        role: "user"
+                    })
+                    console.log(setMessages);
+                    renderMessages2()
+                    sendMessageToChatGPT(message)
+            });
+
+
+            async function sendMessageToChatGPT(message){
+                const newMessage = {
+                    message: message,
+                    direction: 'outgoing',
+                    sender: "user"
+                };
+                
+                const newMessages = [newMessage];
+
+                await processMessageToChatGPT(setMessages);
+            
+        }
+
+            // Renderizar mensajes al cargar la página
+            //renderMessages();
+
+
+
+
+
+            const setMessages = []
+
+
+            async function albertofun(){
+                const setMessages = []
+
+                const messages1 =
+            {
+                message: "Hi, I am GlobantGPT, what can I help you?",
+                sentTime: "just now",
+                sender: "ChatGPT"
+            }
+            
+
+                console.log('Se ha ejectuado esto alberto');
+            
+                console.log('Se ha ejectuado esto alberto');
+                const newMessage = {
+                    message: "Hi, I am GlobantGPT, what can I help you?",
+                    direction: 'outgoing',
+                    sender: "user"
+                };
+
+                const newMessages = [messages1, newMessage];
+    
+                //setMessages(newMessages);
+
+                // Initial system message to determine ChatGPT functionality
+                // How it responds, how it talks, etc.
+                //setIsTyping(true);
+
+
+
+                await processMessageToChatGPT(newMessages);
+            
+        }
+
+
+
+
+
+
+
+            async function processMessageToChatGPT(chatMessages) { // messages is an array of messages
+
+                
+                const content= 'Respond as if you were a product owner. Create a User Story this format: 1. Tittle of the User Story 2. Description with the format "as a user" and Feature and at least 3 Scenario using Gherking. 3.Acceptance criteria 4. Story point and explain why. 5. topics to discuss. 6. Additional Documentation. 7. Unhappy path. 8. Business Value (tangible and intangible benefics a business can get from the capabilities of a product)'
+
+                const api1 = "sk-tbzKPK8dDRhT4H"
+                const api2 = "7a5SGMT3BlbkFJQzzs"
+                const api3 = "IhDS2DdUvh3VuF2d"
+
+                const API_KEY = api1 + api2 + api3;
+
+                //const API_KEY = "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";
+                const systemMessage = { //  Explain things like you're talking to a software professional with 5 years of experience.
+                     "role": "system", "content": content
+                }
+
+            // Format messages for chatGPT API
+            // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
+            // So we need to reformat
+
+                let apiMessages = chatMessages.map((messageObject) => {
+                    let role = "";
+                    if (messageObject.sender === "ChatGPT") {
+                        role = "assistant";
+                    } else {
+                        role = "user";
+                    }
+                    return { role: role, content: messageObject.message}
+                });
+
+
+                // Get the request body set up with the model we plan to use
+                // and the messages which we formatted above. We add a system message in the front to'
+                // determine how we want chatGPT to act. 
+                const apiRequestBody = {
+                    "model": "gpt-3.5-turbo",
+                     "messages": [
+                     systemMessage,
+                     //systemMessage2,  // The system message DEFINES the logic of our chatGPT
+                    ...apiMessages // The messages from our chat with ChatGPT
+                    ]
+                }
+
+                await fetch("https://api.openai.com/v1/chat/completions", 
+                {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer " + API_KEY,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(apiRequestBody)
+                }).then((data) => {
+                    return data.json();
+                }).then((data) => {
+                    console.log(data);
+                    setMessages.push({
+                        message: data.choices[0].message.content,
+                        sender: "ChatGPT",
+                        role: "assistant"
+                    })
+                    console.log(setMessages);
+                    renderMessages2()
+                    /*
+                    setMessages([...chatMessages, {
+                        message: data.choices[0].message.content,
+                        sender: "ChatGPT"
+                    }]);
+                    setIsTyping(false);
+                    */
+                });
+            }
+
+            // Función para renderizar los mensajes
+            function renderMessages2() {
+                console.log("ABC1");
+                const messagesDiv = document.querySelector('#messages');
+                messagesDiv.innerHTML = '';
+                console.log("ABC2");
+                setMessages.forEach((message) => {
+                    console.log("ABC3");
+                    const messageDiv = document.createElement('div');
+
+                    let textoConBreaks = message.message.replace(/\n/g, "<br>");
+                    messageDiv.innerHTML = `<strong>${message.sender}:</strong> ${textoConBreaks}`;
+                    messagesDiv.appendChild(messageDiv);
+                });
+                console.log("ABC4");
+            }
+
+        </script>
+        </section>
+	    
+    </body>
+</html>
