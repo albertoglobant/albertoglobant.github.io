@@ -2,9 +2,81 @@
 <html lang="en">
     <head>
         <style>
+            * {
+                padding: 24px;
+            }
             #message-input {
             width: 75%;
             margin: 0;
+            }
+            input[type="text"] {
+                width: 100%; /* ancho al 100% */
+                padding: 12px; /* espacio interno */
+                border: 1px solid #ccc; /* borde gris claro */
+                border-radius: 4px; /* borde redondeado */
+                box-sizing: border-box; /* tamaño incluyendo el borde */
+                font-size: 16px; /* tamaño de la fuente */
+                transition: border-color 0.28s cubic-bezier(0.4, 0, 0.2, 1); /* transición del color del borde */
+            }
+            #send-btn {
+                font-size: 16px; /* tamaño del texto */
+                margin: 4px 2px; /* margen exterior */
+                padding: 12px 24px; /* espacio interno */
+                border-radius: 4px; /* borde redondeado */
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); /* sombra */
+                transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1); /* transición de sombra */
+            }
+            #btn-send-jira {
+                width: 82%;
+                background-color: #212a90; /* color de fondo */
+                border: none; /* borde sin estilo */
+                color: white; /* color del texto */
+                padding: 12px 24px; /* espacio interno */
+                text-align: center; /* centrar texto */
+                text-decoration: none; /* sin subrayado */
+                display: inline-block; /* mostrar en línea */
+                font-size: 16px; /* tamaño del texto */
+                margin: 4px 2px; /* margen exterior */
+                cursor: pointer; /* cursor de apuntador */
+                border-radius: 4px; /* borde redondeado */
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); /* sombra */
+                transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1); /* transición de sombra */
+            }
+
+            #btn-send-jira,
+            #btn-send-jira {
+                box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.42), 0 4px 23px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); /* efecto de sombra al pasar el cursor o hacer clic */
+            }
+
+            #btn-user-front {
+                background-color: #006b69; /* color de fondo */
+                border: none; /* borde sin estilo */
+                color: white; /* color del texto */
+                padding: 12px 24px; /* espacio interno */
+                text-align: center; /* centrar texto */
+                text-decoration: none; /* sin subrayado */
+                display: inline-block; /* mostrar en línea */
+                font-size: 16px; /* tamaño del texto */
+                margin: 4px 2px; /* margen exterior */
+                cursor: pointer; /* cursor de apuntador */
+                border-radius: 4px; /* borde redondeado */
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); /* sombra */
+                transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1); /* transición de sombra */
+            }
+            #btn-user-backend {
+                background-color: #9b00af; /* color de fondo */
+                border: none; /* borde sin estilo */
+                color: white; /* color del texto */
+                padding: 12px 24px; /* espacio interno */
+                text-align: center; /* centrar texto */
+                text-decoration: none; /* sin subrayado */
+                display: inline-block; /* mostrar en línea */
+                font-size: 16px; /* tamaño del texto */
+                margin: 4px 2px; /* margen exterior */
+                cursor: pointer; /* cursor de apuntador */
+                border-radius: 4px; /* borde redondeado */
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12); /* sombra */
+                transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1); /* transición de sombra */
             }
           </style>
         <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@2.0.0/dist/bundle.css" media="all">
@@ -12,19 +84,22 @@
     </head>
     <body>
         <section id="content" class="ac-content">
-		<h1>Create your User Story in a fastest way</h1>
-            <h2>Globant Idea</h2>
-            <button onclick="sendToJira()">Enviar a Jira</button>
-            <button>User Story for Front</button>
+		<h1>User Story Creator by Globant</h1>
+        <p></p>
+            <button id="btn-user-front">User Story for Front</button>
+            <button id="btn-user-backend">User Story for Backend</button>
 	        <div id="nuevoTexto" style="display:none">
 		        <p>User Story for Front UI</p>
 	        </div>
 
+            <p></p>
             <div id="chat">
                 <div id="messages"></div>
                 <input type="text" id="message-input" placeholder="User Story Title">
                 <button id="send-btn">Enviar</button>
               </div>
+              <p></p>
+              <button id="btn-send-jira" onclick="sendToJira()">Enviar a Jira</button>
 
         <script>
             
